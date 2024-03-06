@@ -117,11 +117,13 @@ gateway:
         port: {{< .Values.deploykf_core.deploykf_istio_gateway.gatewayService.ports.http | default .Values.deploykf_core.deploykf_istio_gateway.gateway.ports.http >}}
         protocol: TCP
         targetPort: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.ports.http >}}
+        nodePort: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.nodePorts.http >}}
       {{<- if .Values.deploykf_core.deploykf_istio_gateway.gateway.tls.enabled >}}
       - name: https
         port: {{< .Values.deploykf_core.deploykf_istio_gateway.gatewayService.ports.https | default .Values.deploykf_core.deploykf_istio_gateway.gateway.ports.https >}}
         protocol: TCP
         targetPort: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.ports.https >}}
+        nodePort: {{< .Values.deploykf_core.deploykf_istio_gateway.gateway.nodePorts.https >}}
       {{<- end >}}
 
   resources:
